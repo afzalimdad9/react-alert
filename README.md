@@ -1,9 +1,9 @@
-# react-alert
+# @afzalimdad9/react-alert
 
 > alerts for React
 
-[![travis build](https://img.shields.io/travis/schiehll/react-alert.svg?style=flat-square)](https://travis-ci.org/schiehll/react-alert)
-[![version](https://img.shields.io/npm/v/react-alert.svg?style=flat-square)](http://npm.im/react-alert)
+[![travis build](https://img.shields.io/travis/afzalimdad9/react-alert.svg?style=flat-square)](https://travis-ci.org/afzalimdad9/react-alert)
+[![version](https://img.shields.io/npm/v/@afzalimdad9/react-alert.svg?style=flat-square)](http://npm.im/@afzalimdad9/react-alert)
 
 ## Demo
 
@@ -12,23 +12,23 @@
 ## Installation
 
 ```bash
-$ npm install --save react-alert
+$ npm install --save @afzalimdad9/react-alert
 ```
 
 ### Templates
 
 You can provide your own alert template if you need to. Otherwise you can just plug in one of the following:
 
-- [Basic](https://github.com/schiehll/react-alert-template-basic)
-- [Dark](https://github.com/schiehll/react-alert-template-oldschool-dark)
-- [Material UI](https://github.com/MMMayC/react-alert-template-mui)
+- [Basic](https://github.com/afzalimdad9/react-alert-template-basic)
+- [Dark](https://github.com/afzalimdad9/react-alert-template-oldschool-dark)
+- [Material UI](https://github.com/afzalimdad9/react-alert-template-mui)
 
 Feel free to submit a PR with the link for your own template.
 
 To get started, try installing the basic one:
 
 ```bash
-$ npm install --save react-alert react-alert-template-basic
+$ npm install --save @afzalimdad9/react-alert @afzalimdad9/react-alert-template-basic
 ```
 
 ### Peer dependencies
@@ -50,8 +50,8 @@ First you have to wrap your app with the Provider giving it the alert template a
 // index.js
 import React from 'react'
 import { render } from 'react-dom'
-import { transitions, positions, Provider as AlertProvider } from 'react-alert'
-import AlertTemplate from 'react-alert-template-basic'
+import { transitions, positions, Provider as AlertProvider } from '@afzalimdad9/react-alert'
+import AlertTemplate from '@afzalimdad9/react-alert-template-basic'
 import App from './App'
 
 // optional configuration
@@ -78,7 +78,7 @@ Then import the `useAlert` hook to be able to show alerts:
 ```js
 // App.js
 import React from 'react'
-import { useAlert } from 'react-alert'
+import { useAlert } from '@afzalimdad9/react-alert'
 
 const App = () => {
   const alert = useAlert()
@@ -103,7 +103,7 @@ You can also use it with a HOC:
 
 ```js
 import React from 'react'
-import { withAlert } from 'react-alert'
+import { withAlert } from '@afzalimdad9/react-alert'
 
 const App = ({ alert }) => (
   <button
@@ -145,7 +145,7 @@ template: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired //
 Note that the position, type and transition strings are available as constants which can be imported the next way:
 
 ```js
-import { positions, transitions, types } from 'react-alert'
+import { positions, transitions, types } from '@afzalimdad9/react-alert'
 ```
 
 and have such values:
@@ -259,7 +259,7 @@ If you ever need to have an alert just the way you want, you can provide your ow
 ```js
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider as AlertProvider } from 'react-alert'
+import { Provider as AlertProvider } from '@afzalimdad9/react-alert'
 import App from './App'
 
 // the style contains only the margin given as offset
@@ -305,8 +305,8 @@ to each type of alert separately.
 ```js
 import React, { createContext } from 'react'
 import { render } from 'react-dom'
-import { useAlert, positions, Provider as AlertProvider } from 'react-alert'
-import AlertTemplate from 'react-alert-template-basic'
+import { useAlert, positions, Provider as AlertProvider } from '@afzalimdad9/react-alert'
+import AlertTemplate from '@afzalimdad9/react-alert-template-basic'
 
 const TopRightAlertContext = createContext()
 
@@ -370,8 +370,8 @@ import {
   useAlert,
   positions,
   transitions
-} from 'react-alert'
-import AlertTemplate from 'react-alert-template-basic'
+} from '@afzalimdad9/react-alert'
+import AlertTemplate from '@afzalimdad9/react-alert-template-basic'
 
 const alertOptions = {
   offset: '25px',
