@@ -1,8 +1,8 @@
 {
   "name": "@afzalimdad9/react-alert-template-basic",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Afzal Imdad <afzalimdad9@gmail.com>",
-  "main": "src/index.tsx",
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": false,
