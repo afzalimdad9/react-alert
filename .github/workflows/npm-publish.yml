@@ -28,7 +28,11 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Install Dependencies
-        run: npm install
+        run: |
+          if [ ! -f ./packages/${{ matrix.package }}/package-lock.json ]; then
+            npm install --package-lock-only
+          fi
+          npm install
         working-directory: ./packages/${{ matrix.package }}
 
       - name: 🔨 Build Package
