@@ -9,6 +9,11 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        package: 
+          - $(ls packages)
+
     steps:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
@@ -24,12 +29,14 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: npm install
+        working-directory: ./packages/${{ matrix.package }}
 
       - name: 🔨 Build Package
         run: npm run build
+        working-directory: ./packages/${{ matrix.package }}
       
       - name: 🚀 Publish to npm
         run: npm publish --access public --tag latest
+        working-directory: ./packages/${{ matrix.package }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-

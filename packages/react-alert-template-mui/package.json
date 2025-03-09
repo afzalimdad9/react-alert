@@ -1,0 +1,35 @@
+{
+  "name": "@afzalimdad9/react-alert-template-mui",
+  "version": "1.0.1",
+  "description": "react alert template using mui",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/afzalimdad9/react-alert/tree/master/react-alert-template-mui.git"
+  },
+  "keywords": [
+    "react-alert",
+    "Material UI",
+    "afzalimdad9",
+    "react-alert-template-mui"
+  ],
+  "author": "Afzal Imdad <afzalimdad9@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/afzalimdad9/react-alert/tree/master/react-alert-template-mui/issues"
+  },
+  "homepage": "https://github.com/afzalimdad9/react-alert/tree/master/react-alert-template-mui#readme",
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^6.4.7",
+    "react": "^19.0.0"
+  }
+}

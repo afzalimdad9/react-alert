@@ -1,0 +1,50 @@
+{
+  "name": "@afzalimdad9/react-alert-template-basic",
+  "version": "1.0.3",
+  "author": "Afzal Imdad <afzalimdad9@gmail.com>",
+  "main": "dist/cjs/@afzalimdad9/alert-template-basic.js",
+  "module": "dist/esm/@afzalimdad9/alert-template-basic.js",
+  "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/afzalimdad9/react-alert/tree/master/react-alert-template-basic.git"
+  },
+  "keywords": [
+    "react",
+    "alert",
+    "react-alert",
+    "toaster",
+    "react-toaster",
+    "react-component",
+    "react-alert-template",
+    "afzalimdad9"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "node ./scripts/build.js",
+    "lint": "standard --fix"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "pascal-case": "^4.0.0",
+    "rollup": "^4.35.0",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-uglify": "^2.0.1",
+    "standard": "^17.1.2"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "dist"
+    ]
+  }
+}

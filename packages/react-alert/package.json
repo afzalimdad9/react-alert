@@ -1,7 +1,7 @@
 {
   "name": "@afzalimdad9/react-alert",
   "description": "A simple react alert component",
-  "version": "7.0.4",
+  "version": "7.0.5",
   "author": "Afzal Imdad <afzalimdad9@gmail.com>",
   "main": "dist/cjs/@afzalimdad9/react-alert.js",
   "module": "dist/esm/@afzalimdad9/react-alert.js",
