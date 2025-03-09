@@ -1,16 +1,18 @@
-import React, { useMemo } from 'react'
+import React, { PropsWithChildren, useMemo } from 'react'
 import { positions } from './options'
 
-export const getStyles = position => {
-  const initialStyles = {
+export const getStyles: (
+  position: keyof typeof positions,
+) => React.CSSProperties = (position) => {
+  const initialStyles: React.CSSProperties = {
     left: 0,
-    position: 'fixed',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column',
     width: '100%',
-    pointerEvents: 'none'
+    position: 'fixed',
+    flexDirection: 'column',
+    pointerEvents: 'none',
   }
 
   switch (position) {
@@ -18,54 +20,54 @@ export const getStyles = position => {
       return {
         ...initialStyles,
         top: 0,
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
       }
     case positions.TOP_CENTER:
       return {
         ...initialStyles,
-        top: 0
+        top: 0,
       }
     case positions.TOP_RIGHT:
       return {
         ...initialStyles,
         top: 0,
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
       }
     case positions.MIDDLE_LEFT:
       return {
         ...initialStyles,
         top: '50%',
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
       }
     case positions.MIDDLE: {
       return {
         ...initialStyles,
-        top: '50%'
+        top: '50%',
       }
     }
     case positions.MIDDLE_RIGHT:
       return {
         ...initialStyles,
         top: '50%',
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
       }
 
     case positions.BOTTOM_LEFT:
       return {
         ...initialStyles,
         bottom: 0,
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
       }
     case positions.BOTTOM_CENTER:
       return {
         ...initialStyles,
-        bottom: 0
+        bottom: 0,
       }
     case positions.BOTTOM_RIGHT:
       return {
         ...initialStyles,
         bottom: 0,
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
       }
 
     default: {
@@ -74,15 +76,22 @@ export const getStyles = position => {
   }
 }
 
+interface WrapperProps {
+  options: {
+    position: keyof typeof positions
+    containerStyle?: React.CSSProperties
+  }
+}
+
 const Wrapper = ({
   children,
   options: { position, containerStyle },
   ...props
-}) => {
+}: PropsWithChildren<WrapperProps>) => {
   const styles = useMemo(() => getStyles(position), [position])
 
   return (
-    children.length > 0 && (
+    children && (
       <div style={{ ...styles, ...containerStyle }} {...props}>
         {children}
       </div>

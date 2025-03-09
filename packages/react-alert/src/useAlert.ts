@@ -1,10 +1,11 @@
 import { useContext, useMemo } from 'react'
 import DefaultContext from './Context'
+import { AlertContextType } from './types'
 
-const useAlert = Context => {
+const useAlert = (Context = DefaultContext): AlertContextType => {
   const alertContext = useContext(Context || DefaultContext)
   const alert = useMemo(() => {
-    return alertContext.current
+    return alertContext!
   }, [alertContext])
   return alert
 }

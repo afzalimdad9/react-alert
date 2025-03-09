@@ -18,27 +18,36 @@ const defaultStyle = {
 const transitionStyles = {
   [transitions.FADE]: {
     entering: { opacity: 0 },
-    entered: { opacity: 1 }
+    entered: { opacity: 1 },
+    exiting: {},
+    exited: {},
+    unmounted: {},
   },
   [transitions.SCALE]: {
     entering: { transform: 'scale(0)' },
     entered: { transform: 'scale(1)' },
     exiting: { transform: 'scale(0)' },
-    exited: { transform: 'scale(1)' }
+    exited: { transform: 'scale(1)' },
+    unmounted: {},
   }
 }
 
-const Transtion = ({ children, type, ...props }) => {
-  const ref = useRef(null)
+interface TransitionProps {
+  type: keyof typeof transitions
+  children: React.ReactNode
+}
+
+const Transition = ({ children, type, ...props }: TransitionProps) => {
+  const ref = useRef<HTMLDivElement>(null)
 
   return (
     <AlertTransition nodeRef={ref} {...props} timeout={duration}>
-      {state => (
+      {(state) => (
         <div
           ref={ref}
           style={{
             ...defaultStyle[type],
-            ...transitionStyles[type][state]
+            ...(transitionStyles[type][state] || {})
           }}
         >
           {children}
@@ -48,4 +57,4 @@ const Transtion = ({ children, type, ...props }) => {
   )
 }
 
-export default Transtion
+export default Transition

@@ -3,7 +3,7 @@ import React, {
   useState,
   useRef,
   useEffect,
-  useCallback
+  useCallback,
 } from 'react'
 import PropTypes from 'prop-types'
 import { TransitionGroup } from 'react-transition-group'
@@ -13,6 +13,7 @@ import Wrapper from './Wrapper'
 import Transition from './Transition'
 import { positions, transitions, types } from './options'
 import { groupBy } from './helpers'
+import { ProviderProps, Alert, AlertOptions, AlertContextType } from './types'
 
 const Provider = ({
   children,
@@ -25,11 +26,11 @@ const Provider = ({
   template: AlertComponent,
   context: Context,
   ...props
-}) => {
-  const root = useRef(null)
-  const alertContext = useRef(null)
-  const timersId = useRef([])
-  const [alerts, setAlerts] = useState([])
+}: React.PropsWithChildren<ProviderProps>) => {
+  const root = useRef<HTMLDivElement>(null)
+  const alertContext = useRef<AlertContextType | null>(null)
+  const timersId = useRef<NodeJS.Timeout[]>([])
+  const [alerts, setAlerts] = useState<Alert[]>([])
 
   useEffect(() => {
     root.current = document.createElement('div')
@@ -43,10 +44,10 @@ const Provider = ({
     }
   }, [])
 
-  const remove = useCallback(alert => {
-    setAlerts(currentAlerts => {
+  const remove = useCallback((alert: Alert) => {
+    setAlerts((currentAlerts) => {
       const lengthBeforeRemove = currentAlerts.length
-      const filteredAlerts = currentAlerts.filter(a => a.id !== alert.id)
+      const filteredAlerts = currentAlerts.filter((a) => a.id !== alert.id)
 
       if (lengthBeforeRemove > filteredAlerts.length && alert.options.onClose) {
         alert.options.onClose()
@@ -57,29 +58,26 @@ const Provider = ({
   }, [])
 
   const removeAll = useCallback(() => {
-    alertContext.current.alerts.forEach(remove)
+    alertContext.current!.alerts.forEach(remove)
   }, [remove])
 
   const show = useCallback(
-    (message = '', options = {}) => {
-      const id = Math.random()
-        .toString(36)
-        .substr(2, 9)
+    (message = '', options: Partial<AlertOptions> = {}) => {
+      const id = Math.random().toString(36).substr(2, 9)
 
-      const alertOptions = {
+      const alertOptions: AlertOptions = {
         position: options.position || position,
         timeout,
         type,
-        ...options
+        ...options,
       }
 
-      const alert = {
+      const alert: Alert = {
         id,
         message,
-        options: alertOptions
+        options: alertOptions,
+        close: () => remove(alert),
       }
-
-      alert.close = () => remove(alert)
 
       if (alert.options.timeout) {
         const timerId = setTimeout(() => {
@@ -91,36 +89,36 @@ const Provider = ({
         timersId.current.push(timerId)
       }
 
-      setAlerts(state => state.concat(alert))
+      setAlerts((state) => state.concat(alert))
       if (alert.options.onOpen) alert.options.onOpen()
 
       return alert
     },
-    [position, remove, timeout, type]
+    [position, remove, timeout, type],
   )
 
   const success = useCallback(
-    (message = '', options = {}) => {
+    (message = '', options: Partial<AlertOptions> = {}) => {
       options.type = types.SUCCESS
       return show(message, options)
     },
-    [show]
+    [show],
   )
 
   const error = useCallback(
-    (message = '', options = {}) => {
+    (message = '', options: Partial<AlertOptions> = {}) => {
       options.type = types.ERROR
       return show(message, options)
     },
-    [show]
+    [show],
   )
 
   const info = useCallback(
-    (message = '', options = {}) => {
+    (message = '', options: Partial<AlertOptions> = {}) => {
       options.type = types.INFO
       return show(message, options)
     },
-    [show]
+    [show],
   )
 
   alertContext.current = {
@@ -130,20 +128,18 @@ const Provider = ({
     removeAll,
     success,
     error,
-    info
+    info,
   }
 
-  const alertsByPosition = groupBy(alerts, alert => alert.options.position)
+  const alertsByPosition = groupBy(alerts, (alert: Alert) => alert.options.position)
 
   return (
-    <Context.Provider value={alertContext}>
+    <Context.Provider value={alertContext.current}>
       {children}
       {root.current &&
         createPortal(
           <Fragment>
-            {Object.keys(positions).map(key => {
-              const position = positions[key]
-
+            {Object.values(positions).map((position) => {
               return (
                 <TransitionGroup
                   appear
@@ -153,7 +149,7 @@ const Provider = ({
                   {...props}
                 >
                   {alertsByPosition[position]
-                    ? alertsByPosition[position].map(alert => (
+                    ? alertsByPosition[position].map((alert: Alert) => (
                         <Transition type={transition} key={alert.id}>
                           <AlertComponent
                             style={{ margin: offset, pointerEvents: 'all' }}
@@ -161,12 +157,12 @@ const Provider = ({
                           />
                         </Transition>
                       ))
-                    : null}
+                    : <></>}
                 </TransitionGroup>
               )
             })}
           </Fragment>,
-          root.current
+          root.current,
         )}
     </Context.Provider>
   )
@@ -174,24 +170,20 @@ const Provider = ({
 
 Provider.propTypes = {
   offset: PropTypes.string,
-  position: PropTypes.oneOf(
-    Object.keys(positions).map(position => positions[position])
-  ),
+  position: PropTypes.oneOf(Object.values(positions)),
   timeout: PropTypes.number,
-  type: PropTypes.oneOf(Object.keys(types).map(type => types[type])),
-  transition: PropTypes.oneOf(
-    Object.keys(transitions).map(transition => transitions[transition])
-  ),
+  type: PropTypes.oneOf(Object.values(types)),
+  transition: PropTypes.oneOf(Object.values(transitions)),
   containerStyle: PropTypes.object,
   template: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.func,
-    PropTypes.elementType
+    PropTypes.elementType,
   ]).isRequired,
   context: PropTypes.shape({
     Provider: PropTypes.object,
-    Consumer: PropTypes.object
-  })
+    Consumer: PropTypes.object,
+  }),
 }
 
 Provider.defaultProps = {
@@ -201,9 +193,9 @@ Provider.defaultProps = {
   type: types.INFO,
   transition: transitions.FADE,
   containerStyle: {
-    zIndex: 100
+    zIndex: 100,
   },
-  context: DefaultContext
+  context: DefaultContext,
 }
 
 export default Provider
