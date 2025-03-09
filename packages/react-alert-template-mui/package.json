@@ -3,8 +3,11 @@
   "version": "1.0.1",
   "description": "react alert template using mui",
   "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build",
     "build": "tsc"
   },
   "repository": {
@@ -24,6 +27,7 @@
   },
   "homepage": "https://github.com/afzalimdad9/react-alert/tree/master/react-alert-template-mui#readme",
   "devDependencies": {
+    "@types/react": "^19.0.10",
     "typescript": "^5.8.2"
   },
   "dependencies": {

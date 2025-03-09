@@ -4,7 +4,7 @@ import SuccessIcon from './icons/SuccessIcon'
 import ErrorIcon from './icons/ErrorIcon'
 import CloseIcon from './icons/CloseIcon'
 
-const alertStyle = {
+const alertStyle: React.CSSProperties = {
   backgroundColor: '#151515',
   color: 'white',
   padding: '10px',
@@ -27,7 +27,14 @@ const buttonStyle = {
   color: '#FFFFFF'
 }
 
-const AlertTemplate = ({ message, options, style, close }) => {
+interface AlertTemplateProps {
+  message: string
+  options: any
+  style: React.CSSProperties
+  close: () => void
+}
+
+const AlertTemplate = ({ message, options, style, close }: AlertTemplateProps) => {
   return (
     <div style={{ ...alertStyle, ...style }}>
       {options.type === 'info' && <InfoIcon />}
