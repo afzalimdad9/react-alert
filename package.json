@@ -1,7 +1,7 @@
 {
   "name": "@afzalimdad9/react-alert",
   "description": "A simple react alert component",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "author": "Afzal Imdad <afzalimdad9@gmail.com>",
   "main": "dist/cjs/@afzalimdad9/react-alert.js",
   "module": "dist/esm/@afzalimdad9/react-alert.js",
@@ -52,10 +52,6 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-uglify": "^6.0.4"
-  },
-  "peerDependencies": {
-    "react": "^16.8.1 || ^17",
-    "react-dom": "^16.8.1 || ^17"
   },
   "jest": {
     "collectCoverageFrom": [
