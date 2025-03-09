@@ -2,7 +2,7 @@
   "name": "@afzalimdad9/react-alert-template-oldschool-dark",
   "version": "1.0.2",
   "author": "Afzal Imdad <afzalimdad9@gmail.com>",
-  "main": "dist/index.js",
+  "main": "src/index.tsx",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",

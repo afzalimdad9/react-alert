@@ -2,7 +2,7 @@
   "name": "@afzalimdad9/react-alert-template-basic",
   "version": "1.0.4",
   "author": "Afzal Imdad <afzalimdad9@gmail.com>",
-  "main": "dist/index.js",
+  "main": "src/index.tsx",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": false,

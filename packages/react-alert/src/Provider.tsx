@@ -131,7 +131,10 @@ const Provider = ({
     info,
   }
 
-  const alertsByPosition = groupBy(alerts, (alert: Alert) => alert.options.position)
+  const alertsByPosition = groupBy(
+    alerts,
+    (alert: Alert) => alert.options.position,
+  )
 
   return (
     <Context.Provider value={alertContext.current}>
@@ -148,16 +151,18 @@ const Provider = ({
                   component={Wrapper}
                   {...props}
                 >
-                  {alertsByPosition[position]
-                    ? alertsByPosition[position].map((alert: Alert) => (
-                        <Transition type={transition} key={alert.id}>
-                          <AlertComponent
-                            style={{ margin: offset, pointerEvents: 'all' }}
-                            {...alert}
-                          />
-                        </Transition>
-                      ))
-                    : <></>}
+                  {alertsByPosition[position] ? (
+                    alertsByPosition[position].map((alert: Alert) => (
+                      <Transition type={transition} key={alert.id}>
+                        <AlertComponent
+                          style={{ margin: offset, pointerEvents: 'all' }}
+                          {...alert}
+                        />
+                      </Transition>
+                    ))
+                  ) : (
+                    <></>
+                  )}
                 </TransitionGroup>
               )
             })}

@@ -2,7 +2,7 @@
   "name": "@afzalimdad9/react-alert-template-mui",
   "version": "1.0.2",
   "description": "react alert template using mui",
-  "main": "dist/index.js",
+  "main": "index.tsx",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
