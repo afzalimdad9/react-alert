@@ -5,10 +5,6 @@
 [![travis build](https://img.shields.io/travis/afzalimdad9/react-alert.svg?style=flat-square)](https://travis-ci.org/afzalimdad9/react-alert)
 [![version](https://img.shields.io/npm/v/@afzalimdad9/react-alert.svg?style=flat-square)](http://npm.im/@afzalimdad9/react-alert)
 
-## Demo
-
-[![Edit l2mo430lzq](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/l2mo430lzq)
-
 ## Installation
 
 ```bash
@@ -30,17 +26,6 @@ To get started, try installing the basic one:
 ```bash
 $ npm install --save @afzalimdad9/react-alert @afzalimdad9/react-alert-template-basic
 ```
-
-### Peer dependencies
-
-This package expect the following peer dependencies:
-
-```
-  "react": "^16.8.1"
-  "react-dom": "^16.8.1"
-```
-
-So make sure that you have those installed too!
 
 ## Usage
 
