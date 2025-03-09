@@ -24,14 +24,17 @@
     "typeRoots": [
       "./node_modules/@types",
       "./types"
-    ], 
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "*": ["dist/*"]
+    }
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx"
+    "./**/*.ts",
+    "./**/*.tsx"
   ],
   "exclude": [
-    "node_modules",
-    "dist"
+    "node_modules"
   ]
 }

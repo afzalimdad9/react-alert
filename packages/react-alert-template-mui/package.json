@@ -1,6 +1,6 @@
 {
   "name": "@afzalimdad9/react-alert-template-mui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "react alert template using mui",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "npm run build",
-    "build": "tsc"
+    "build": "tsc --outDir dist"
   },
   "repository": {
     "type": "git",

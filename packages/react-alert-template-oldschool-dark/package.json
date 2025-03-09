@@ -1,6 +1,6 @@
 {
   "name": "@afzalimdad9/react-alert-template-oldschool-dark",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Afzal Imdad <afzalimdad9@gmail.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -21,7 +21,7 @@
     "afzalimdad9"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --outDir dist",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {

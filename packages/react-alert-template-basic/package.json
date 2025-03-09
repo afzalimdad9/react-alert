@@ -1,6 +1,6 @@
 {
   "name": "@afzalimdad9/react-alert-template-basic",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Afzal Imdad <afzalimdad9@gmail.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "tsc",
+    "build": "tsc --outDir dist",
     "prepublishOnly": "npm run build",
     "lint": "standard --fix"
   },
